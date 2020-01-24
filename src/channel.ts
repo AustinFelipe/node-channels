@@ -1,7 +1,7 @@
 export default class Channel<TChannelType> {
-  results: any[] = [];
+  results: TChannelType[] = [];
 
-  send(anyArg: any) {
+  send(anyArg: TChannelType) {
     this.results.push(anyArg);
   }
   receive(): any {
