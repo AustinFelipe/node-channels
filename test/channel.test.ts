@@ -23,13 +23,23 @@ describe('receive()', () => {
 
   it('should pull correct value', async () => {
     channel.send(10);
-    let test = await channel.receive();
+    const test = await channel.receive();
     expect(test).toBe(10);
   });
 
   it('should pull undefined', async () => {
-    let test = await channel.receive();
+    const test = await channel.receive();
     expect(test).toBeUndefined();
+  });
+
+  it('should pull multiple results', async () => {
+    const tests = [10, 11, 12, 13];
+    for (const test of tests) {
+      channel.send(test);
+    }
+    for (const test of tests) {
+      expect(await channel.receive()).toBe(test);
+    }
   });
 });
 
