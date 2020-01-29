@@ -1,0 +1,15 @@
+{
+  "name": "examples",
+  "version": "1.0.0",
+  "description": "",
+  "main": "tour-of-go.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Austin Felipe",
+  "license": "ISC",
+  "dependencies": {
+    "node-channels": "^0.1.0"
+  }
+}

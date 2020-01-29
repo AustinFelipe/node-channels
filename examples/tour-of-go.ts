@@ -13,6 +13,6 @@ const c = makeChannel<number>();
 goNode(sum, s.slice(0, s.length / 2), c);
 goNode(sum, s.slice(s.length / 2), c);
 
-const [x, y] = [c.receive(), c.receive()];
-
-console.log(x, y, x + y);
+Promise.all([c.receive, c.receive]).then(values => {
+  console.log(values[0], values[1], values[0] + values[1]);
+});
