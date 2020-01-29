@@ -1,10 +1,19 @@
 export default class Channel<TChannelType> {
-  results: TChannelType[] = [];
+  private results: TChannelType[] = [];
 
   send(anyArg: TChannelType) {
     this.results.push(anyArg);
   }
-  receive(): any {
+
+  receive(): TChannelType | undefined {
     return this.results.shift();
+  }
+
+  clear(): void {
+    this.results = [];
+  }
+
+  count(): number {
+    return this.results.length;
   }
 }

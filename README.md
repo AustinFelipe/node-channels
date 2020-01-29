@@ -10,3 +10,4 @@ Based on https://tour.golang.org/concurrency/2
 - [x] Having fun
 - [ ] Testing
 - [ ] Concurrency using [Worker Threads](https://nodejs.org/api/worker_threads.html)
+- [ ] Implement Stricter Generators :)
