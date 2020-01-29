@@ -21,13 +21,15 @@ describe('receive()', () => {
     channel.clear();
   });
 
-  it('should pull correct value', () => {
+  it('should pull correct value', async () => {
     channel.send(10);
-    expect(channel.receive()).toBe(10);
+    let test = await channel.receive();
+    expect(test).toBe(10);
   });
 
-  it('should pull undefined', () => {
-    expect(channel.receive()).toBeUndefined();
+  it('should pull undefined', async () => {
+    let test = await channel.receive();
+    expect(test).toBeUndefined();
   });
 });
 

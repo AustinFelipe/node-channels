@@ -5,8 +5,12 @@ export default class Channel<TChannelType> {
     this.results.push(anyArg);
   }
 
-  receive(): TChannelType | undefined {
-    return this.results.shift();
+  receive(): Promise<TChannelType | undefined> {
+    return new Promise(res => {
+      let result = this.results.shift();
+
+      res(result);
+    });
   }
 
   clear(): void {
