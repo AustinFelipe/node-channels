@@ -12,9 +12,9 @@ Threads on Node have specific usage. As pointed at the [documentation](https://n
 
 - [x] Copy https://tour.golang.org/concurrency/2 example
 - [x] Having fun
-- [ ] Testing
+- [x] Testing
 - [ ] Concurrency using [Worker Threads](https://nodejs.org/api/worker_threads.html)
 - [ ] Add CodeClimate badge
 - [ ] Implement Stricter Generators :)
 - [ ] Example using SharedBuffers
-      = [ ] Implement Thread Pool
+- [ ] Implement Thread Pool
