@@ -17,3 +17,4 @@ Threads on Node have specific usage. As pointed at the [documentation](https://n
 - [ ] Add CodeClimate badge
 - [ ] Implement Stricter Generators :)
 - [ ] Example using SharedBuffers
+      = [ ] Implement Thread Pool
