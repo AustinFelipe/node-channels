@@ -21,3 +21,7 @@ export default class Channel<TChannelType> {
     return this.results.length;
   }
 }
+
+export const makeChannel = function<TChannelType>() {
+  return new Channel<TChannelType>();
+};

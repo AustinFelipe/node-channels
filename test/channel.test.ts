@@ -1,4 +1,4 @@
-import Channel from '../src/channel';
+import Channel, { makeChannel } from '../src/channel';
 import 'jest';
 
 describe('send()', () => {
@@ -69,5 +69,13 @@ describe('count()', () => {
     channel.send(1);
     channel.send(1);
     expect(channel.count()).toBe(3);
+  });
+});
+
+describe('makeChannel()', () => {
+  it('should create typed Channel class', () => {
+    const channel = makeChannel<string>();
+    const expectedType = new Channel<string>();
+    expect(typeof channel).toEqual(typeof expectedType);
   });
 });
