@@ -1,13 +1,5 @@
-import Channel from 'channel';
-import Routine from 'routine';
+import Channel, { makeChannel } from 'channel';
+import Routine, { go } from 'routine';
 
-export const makeChannel = function<TChannelType>() {
-  return new Channel<TChannelType>();
-};
-
-export const goNode = function(routineFunction: any, ...args: any[]): void {
-  new Routine(routineFunction).run(args);
-};
-
-export { Channel };
-export { Routine };
+export { Channel, makeChannel };
+export { Routine, go };
