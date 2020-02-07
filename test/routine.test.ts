@@ -1,16 +1,16 @@
 import { WorkerOptions } from 'worker_threads';
 import Routine, { go } from '../src/routine';
-import * as ts from 'typescript';
 import 'jest';
 
 jest.mock('worker_threads', () => {
   return {
-    Worker: function(filename: string, workerData: WorkerOptions) {
+    Worker: (filename: string, workerData: WorkerOptions) => {
       const wData = workerData.workerData;
-      const fn = wData.routineFunction;
 
-      const t = ts.transpile(fn);
-      eval(t).apply(this, wData.args);
+      console.log(wData);
+      let a: any = undefined;
+      eval(`a=${wData.routineFunction}`);
+      if (a) a(wData.args[0]);
 
       return {
         filename,
@@ -52,7 +52,11 @@ describe('go()', () => {
   it('should run a routine', () => {
     let expectedTrue = false;
 
-    go(() => (expectedTrue = true));
+    go((e: any) => {
+      console.log(e);
+      e[0] = true;
+      return e;
+    }, expectedTrue);
 
     expect(expectedTrue).toBeTruthy();
   });
