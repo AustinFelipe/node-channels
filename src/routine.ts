@@ -9,7 +9,7 @@ export default class Routine {
     // this.routineFunction.apply(this, args);
     this.worker = new Worker('./worker-handler.js', {
       workerData: {
-        routineFunction: this.routineFunction,
+        routineFunction: this.routineFunction.toString(),
         args,
       },
     });

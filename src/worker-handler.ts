@@ -1,7 +1,7 @@
 import { parentPort, workerData } from 'worker_threads';
 
 export interface WorkerThreadOptions {
-  routineFunction: any;
+  routineFunction: string;
   args: any[];
 }
 
@@ -11,7 +11,8 @@ export default class WorkerThread {
   }
 
   async invokeFunction() {
-    const routineObj = this.opts.routineFunction.apply(this, this.opts.args);
+    const routine = eval(this.opts.routineFunction);
+    const routineObj = routine.apply(this, this.opts.args);
 
     if (routineObj instanceof Promise) {
       const result = await routineObj;

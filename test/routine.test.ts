@@ -1,13 +1,16 @@
 import { WorkerOptions } from 'worker_threads';
 import Routine, { go } from '../src/routine';
+import * as ts from 'typescript';
 import 'jest';
 
 jest.mock('worker_threads', () => {
   return {
-    Worker: (filename: string, workerData: WorkerOptions) => {
+    Worker: function(filename: string, workerData: WorkerOptions) {
       const wData = workerData.workerData;
+      const fn = wData.routineFunction;
 
-      wData.routineFunction(wData.args);
+      const t = ts.transpile(fn);
+      eval(t).apply(this, wData.args);
 
       return {
         filename,

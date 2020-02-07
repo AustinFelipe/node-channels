@@ -20,7 +20,7 @@ describe('contructor()', () => {
 
     new WorkerThread(
       {
-        routineFunction: (n: number) => n + 5,
+        routineFunction: '(n) => n + 5',
         args: [1],
       },
       {
